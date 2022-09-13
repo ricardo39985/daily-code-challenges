@@ -382,6 +382,14 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
 
+const fromPairs = (inputArrar)=>{
+  let result={}
+  inputArrar.forEach(subArr => {
+    result[subArr[0]]= subArr[1]
+  });
+  return result
+}
+
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
 
