@@ -344,8 +344,15 @@ hammingDistance('!!!!', '****'); //=> 4
 hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
-
-
+const hammingDistance = (firstString, secondString)=>{
+  if(firstString.length != secondString.length) return NaN
+  let distance = 0
+  for (let i = 0; i < firstString.length; i++) {
+    const letter = firstString[i];
+    if (letter != secondString[i]) distance++
+  }
+  return distance
+}
 
 
 
