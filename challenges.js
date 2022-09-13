@@ -15,7 +15,6 @@ sayHello() //=> Hello!
 function sayHello() {
   return "Hello!"
 }
-console.log(sayHello())
 
 
 /*-----------------------------------------------------------------
@@ -33,6 +32,7 @@ addOne(1) //=> 2
 addOne(-5) //=> -4
 -----------------------------------------------------------------*/
 // Your solution for 01-addOne here:
+const addOne = num => ++num
 
 
 
@@ -58,7 +58,9 @@ addTwoNumbers(0, 0) //=> 0
 addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
-
+const addTwoNumbers = (num1, num2) => {
+  return typeof num1 === 'number' && typeof num2 === 'number' ? num1 + num2 : NaN
+}
 
 
 
@@ -82,7 +84,16 @@ sumNumbers([2, 10, -5]) //=> 7
 sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
-
+function sumNumbers(arrayOfNums) {
+  let sum = 0
+  if (arrayOfNums.length > 0) {
+    for (let i = 0; i < arrayOfNums.length; i++) {
+      const num = arrayOfNums[i];
+      sum += num
+    }
+  }
+  return sum
+}
 
 
 
@@ -105,7 +116,13 @@ add(1,50,1.23) //=> 52.23
 add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
-
+const addList = (...nums) => {
+  let sum = 0
+  nums.forEach(num => {
+    sum += num
+  });
+  return sum
+}
 
 
 
@@ -128,7 +145,9 @@ computeRemainder(4,0) //=> Infinity
 computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
-
+const computeRemainder = (num1, num2) => {
+  return num2 === 0 ? Infinity : num1 % num2
+}
 
 
 /*-----------------------------------------------------------------
@@ -149,10 +168,15 @@ range(1,1) //=> []
 range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
-
-
-
-
+const range = (startingNum, endingNum) => {
+  if (startingNum === endingNum) return []
+  if (startingNum > endingNum) return "First argument must be less than second"
+  const result = []
+  for (let i = startingNum; i < endingNum; i++) {
+    result.push(i)
+  }
+  return result
+}
 
 
 
@@ -163,14 +187,20 @@ Difficulty: Basic
 
 Prompt:
 
-- Write a function called reverseUpcaseString that accepts a single string argument, then returns the string with its characters in reverse orderand converts all characters to uppercase.
+- Write a function called reverseUpcaseString that accepts a single string argument, then returns the string with its characters in reverse order and converts all characters to uppercase.
 
 Examples:
 
 reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES"
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-
+const reverseUpcaseString = (str) => {
+  let result = ''
+  for (let i = str.length - 1; i >= 0; i--) {
+    result += str[i].toUpperCase()
+  }
+  return result
+}
 
 
 
@@ -190,6 +220,9 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
+const removeEnds = str => str.length < 3 ? "" : str.substring(1, str.length - 1)
+
+
 
 
 
@@ -215,6 +248,16 @@ charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
+const charCount = (str) => {
+  let result = {}
+  for (let i = 0; i < str.length; i++) {
+    str[i] in result ? result[str[i]]++ : result[str[i]] = 1
+  }
+  console.log(result)
+  return result
+}
+charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
+charCount('Today is fantastic!')//=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 
 
 
@@ -241,10 +284,13 @@ formatWithPadding(42, '*', 10); //=> "********42"
 formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
+const formatWithPadding = (numToFormat, str, padLen) => numToFormat.toString().length >= padLen ?  numToFormat.toString() : `${str.repeat(padLen-numToFormat.toString().length)}${numToFormat}`
 
 
 
-
+// formatWithPadding(123, '0', 5)
+// formatWithPadding(42, '*', 10); //=> "********42"
+console.log(formatWithPadding(1234, '*', 3)); //=> "1234"
 
 
 /*-----------------------------------------------------------------
@@ -267,8 +313,11 @@ isPalindrome('A nut for a jar of tuna'); //=> true
 isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
-
-
+const isPalindrome = (inputString) => {
+  let wordWithoutWhiteSpace = inputString.split(" ").join("").toUpperCase()
+  let wordReversedWithoutWhiteSpace = inputString.split(" ").join("").split("").reverse().join("").toUpperCase()
+  return inputString.length < 2 ?  true : wordReversedWithoutWhiteSpace===wordWithoutWhiteSpace
+}
 
 
 
