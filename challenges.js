@@ -135,7 +135,7 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
 const computeRemainder = (num1, num2) => {
-  return num2 === 0 ? Infinity : num1 % num2;
+  return num2 === 0 ? Infinity : num1-((Math.floor(num1/num2))*num2);
 };
 
 /*-----------------------------------------------------------------
