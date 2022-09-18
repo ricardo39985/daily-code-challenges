@@ -135,7 +135,7 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
 const computeRemainder = (num1, num2) => {
-  return num2 === 0 ? Infinity : num1-((Math.floor(num1/num2))*num2);
+  return num2 === 0 ? Infinity : num1 - Math.floor(num1 / num2) * num2;
 };
 
 /*-----------------------------------------------------------------
@@ -232,7 +232,6 @@ const charCount = (str) => {
   for (let i = 0; i < str.length; i++) {
     str[i] in result ? result[str[i]]++ : (result[str[i]] = 1);
   }
-  console.log(result);
   return result;
 };
 charCount("hello"); //=> { h: 1, e: 1, l: 2, o: 1 }
@@ -266,7 +265,6 @@ const formatWithPadding = (numToFormat, str, padLen) =>
 
 // formatWithPadding(123, '0', 5)
 // formatWithPadding(42, '*', 10); //=> "********42"
-console.log(formatWithPadding(1234, "*", 3)); //=> "1234"
 
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
@@ -382,13 +380,13 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
 
-const fromPairs = (inputArrar)=>{
-  let result={}
-  inputArrar.forEach(subArr => {
-    result[subArr[0]]= subArr[1]
+const fromPairs = (inputArrar) => {
+  let result = {};
+  inputArrar.forEach((subArr) => {
+    result[subArr[0]] = subArr[1];
   });
-  return result
-}
+  return result;
+};
 
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
@@ -405,8 +403,16 @@ Examples:
 mergeObjects({}, {a: 1});  //=> {a: 1} (same object as first arg)
 mergeObjects({a: 1, b: 2, c: 3}, {d: 4});  //=> {a: 1, b: 2, c: 3, d: 4}
 mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c: 3, d: 44}
+
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
+const mergeObjects = (...args) => {
+  return args.length <= 2
+    ? Object.assign(args[0], args[1])
+    : args.reduce((result, currentVal) => {
+        return Object.assign(result, currentVal);
+      });
+};
 
 /*-----------------------------------------------------------------
 Challenge: 16-findHighestPriced
