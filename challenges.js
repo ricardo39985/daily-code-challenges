@@ -480,7 +480,7 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 //=> ["1 - rose", "2 - tulip", "3 - daisy"]
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
-
+const mapArray = (arr)=> arr.map(num=>num*2)
 /*-----------------------------------------------------------------
 Challenge: 18-reduceArray
 
