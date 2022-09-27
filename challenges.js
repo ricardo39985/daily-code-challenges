@@ -448,10 +448,16 @@ findHighestPriced([
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
 const findHighestPriced = (arr) => {
-  let result = {}
-  arr.forEach((item) => result = !("price" in result) ? item : result.price < item.price ? item : result
+  let result = {};
+  arr.forEach(
+    (item) =>
+      (result = !("price" in result)
+        ? item
+        : result.price < item.price
+        ? item
+        : result)
   );
-  return result
+  return result;
 };
 
 /*-----------------------------------------------------------------
@@ -480,7 +486,7 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 //=> ["1 - rose", "2 - tulip", "3 - daisy"]
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
-const mapArray = (arr)=> arr.map(num=>num*2)
+const mapArray = (arr, func) => arr.map(func);
 /*-----------------------------------------------------------------
 Challenge: 18-reduceArray
 
@@ -514,6 +520,7 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 //=> {"Yes": 2, "No": 1, "Maybe": 1}
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
+const reduceArray = (arr, func, acc) => arr.reduce(func, acc);
 
 /*-----------------------------------------------------------------
 Challenge: 19-flatten
@@ -541,7 +548,11 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 //=> [1, 2, 3, 4, 1, 'a', 'b', 'c']
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
-
+const flatten = (arr) =>
+  arr.reduce((acc, item) => {
+    Array.isArray(item) ? acc.push(...flatten(item)) : acc.push(item);
+    return acc;
+  }, []);
 /*-----------------------------------------------------------------
 Challenge: 20-isPrime
 
@@ -561,6 +572,10 @@ isPrime(29) //=> true
 isPrime(200) //=> false
 -----------------------------------------------------------------*/
 // Your solution for 20-isPrime here:
+
+const isPrime = (num) => {
+  if (num <= 1) return false;
+};
 
 /*-----------------------------------------------------------------
 Challenge: 21-primeFactors
