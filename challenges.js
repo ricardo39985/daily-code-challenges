@@ -231,8 +231,6 @@ const charCount = (str) => {
   }
   return result;
 };
-charCount('hello'); //=> { h: 1, e: 1, l: 2, o: 1 }
-charCount('Today is fantastic!'); //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
@@ -606,7 +604,6 @@ const primeFactors = (num) => {
   }
   return solution;
 };
-// console.log(primeFactors(4));
 /*-----------------------------------------------------------------
 Challenge: 22-intersection
 
@@ -627,6 +624,16 @@ intersection(['a', 1], [true, 'a', 15]) //=> ['a']
 intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 -----------------------------------------------------------------*/
 // Your solution for 22-intersection here:
+
+const intersection = (a1, a2) => {
+  const solution = [];
+  const largest = a1.length >= a2.length ? a1 : a2;
+  const smaller = a1.length < a2.length ? a1 : a2;
+  largest.forEach((element) => {
+    if (smaller.includes(element)) solution.push(smaller.splice(smaller.indexOf(element), 1)[0]);
+  });
+  return solution;
+};
 
 /*-----------------------------------------------------------------
 Challenge: 23-balancedBrackets
