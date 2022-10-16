@@ -556,15 +556,13 @@ isPrime(200) //=> false
 // Your solution for 20-isPrime here:
 
 const isPrime = (num) => {
-  if (num <= 1) return false;
-  if (parseInt(num) != num) return false;
+  if (parseInt(num) != num || num <= 1) return false;
   for (let i = 2; i > 0 && i <= num; i++) {
     if (i != num && num % i === 0) return false;
   }
   return true;
 };
 
-// console.log(isPrime(29)); //=> true
 /*-----------------------------------------------------------------
 Challenge: 21-primeFactors
 
@@ -588,6 +586,9 @@ primeFactors(105) //=> [3, 5, 7]
 primeFactors(200) //=> [2, 2, 2, 5, 5]
 -----------------------------------------------------------------*/
 // Your solution for 21-primeFactors here:
+const primeFactors = (num) =>{
+
+}
 
 /*-----------------------------------------------------------------
 Challenge: 22-intersection
