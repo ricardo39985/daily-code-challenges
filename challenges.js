@@ -13,7 +13,7 @@ sayHello() //=> Hello!
 -----------------------------------------------------------------*/
 // Your solution for 00-sayHello (example) here:
 function sayHello() {
-  return "Hello!";
+  return 'Hello!';
 }
 
 /*-----------------------------------------------------------------
@@ -55,9 +55,7 @@ addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
 const addTwoNumbers = (num1, num2) => {
-  return typeof num1 === "number" && typeof num2 === "number"
-    ? num1 + num2
-    : NaN;
+  return typeof num1 === 'number' && typeof num2 === 'number' ? num1 + num2 : NaN;
 };
 
 /*-----------------------------------------------------------------
@@ -158,7 +156,7 @@ range(5,2) //=> "First argument must be less than second"
 // Your solution for 06-range here:
 const range = (startingNum, endingNum) => {
   if (startingNum === endingNum) return [];
-  if (startingNum > endingNum) return "First argument must be less than second";
+  if (startingNum > endingNum) return 'First argument must be less than second';
   const result = [];
   for (let i = startingNum; i < endingNum; i++) {
     result.push(i);
@@ -181,7 +179,7 @@ reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES"
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
 const reverseUpcaseString = (str) => {
-  let result = "";
+  let result = '';
   for (let i = str.length - 1; i >= 0; i--) {
     result += str[i].toUpperCase();
   }
@@ -204,8 +202,7 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-const removeEnds = (str) =>
-  str.length < 3 ? "" : str.substring(1, str.length - 1);
+const removeEnds = (str) => (str.length < 3 ? '' : str.substring(1, str.length - 1));
 
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
@@ -234,8 +231,8 @@ const charCount = (str) => {
   }
   return result;
 };
-charCount("hello"); //=> { h: 1, e: 1, l: 2, o: 1 }
-charCount("Today is fantastic!"); //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
+charCount('hello'); //=> { h: 1, e: 1, l: 2, o: 1 }
+charCount('Today is fantastic!'); //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
@@ -287,17 +284,9 @@ isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
 const isPalindrome = (inputString) => {
-  let wordWithoutWhiteSpace = inputString.split(" ").join("").toUpperCase();
-  let wordReversedWithoutWhiteSpace = inputString
-    .split(" ")
-    .join("")
-    .split("")
-    .reverse()
-    .join("")
-    .toUpperCase();
-  return inputString.length < 2
-    ? true
-    : wordReversedWithoutWhiteSpace === wordWithoutWhiteSpace;
+  let wordWithoutWhiteSpace = inputString.split(' ').join('').toUpperCase();
+  let wordReversedWithoutWhiteSpace = inputString.split(' ').join('').split('').reverse().join('').toUpperCase();
+  return inputString.length < 2 ? true : wordReversedWithoutWhiteSpace === wordWithoutWhiteSpace;
 };
 
 /*-----------------------------------------------------------------
@@ -352,7 +341,7 @@ mumble('!A 2'); //=> '!-AA-   -2222'
 // Your solution for 13-mumble here:
 
 const mumble = (inputString) => {
-  let result = "";
+  let result = '';
   for (let i = 0; i < inputString.length; i++) {
     result +=
       i != inputString.length - 1
@@ -449,14 +438,7 @@ findHighestPriced([
 // Your solution for 16-findHighestPriced here:
 const findHighestPriced = (arr) => {
   let result = {};
-  arr.forEach(
-    (item) =>
-      (result = !("price" in result)
-        ? item
-        : result.price < item.price
-        ? item
-        : result)
-  );
+  arr.forEach((item) => (result = !('price' in result) ? item : result.price < item.price ? item : result));
   return result;
 };
 
@@ -575,8 +557,14 @@ isPrime(200) //=> false
 
 const isPrime = (num) => {
   if (num <= 1) return false;
+  if (parseInt(num) != num) return false;
+  for (let i = 2; i > 0 && i <= num; i++) {
+    if (i != num && num % i === 0) return false;
+  }
+  return true;
 };
 
+// console.log(isPrime(29)); //=> true
 /*-----------------------------------------------------------------
 Challenge: 21-primeFactors
 
