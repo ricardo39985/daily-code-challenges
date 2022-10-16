@@ -586,10 +586,27 @@ primeFactors(105) //=> [3, 5, 7]
 primeFactors(200) //=> [2, 2, 2, 5, 5]
 -----------------------------------------------------------------*/
 // Your solution for 21-primeFactors here:
-const primeFactors = (num) =>{
-
-}
-
+const primeFactors = (num) => {
+  if (parseInt(num) != num || num < 1) return [];
+  if (isPrime(num)) return [num];
+  const factors = [];
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) factors.push(i);
+  }
+  const solution = [];
+  let dividend = num;
+  let index = 0;
+  while (solution.reduce((sum, curr) => sum * curr, 1) != num) {
+    if (dividend % factors[index] === 0) {
+      solution.push(factors[index]);
+      dividend = dividend / factors[index];
+    } else {
+      index++;
+    }
+  }
+  return solution;
+};
+// console.log(primeFactors(4));
 /*-----------------------------------------------------------------
 Challenge: 22-intersection
 
