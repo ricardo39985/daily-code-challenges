@@ -12,9 +12,7 @@ Examples:
 sayHello() //=> Hello!
 -----------------------------------------------------------------*/
 // Your solution for 00-sayHello (example) here:
-function sayHello() {
-  return 'Hello!';
-}
+const sayHello = () => 'Hello!';
 
 /*-----------------------------------------------------------------
 Challenge: 01-addOne
@@ -54,9 +52,7 @@ addTwoNumbers(0, 0) //=> 0
 addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
-const addTwoNumbers = (num1, num2) => {
-  return typeof num1 === 'number' && typeof num2 === 'number' ? num1 + num2 : NaN;
-};
+const addTwoNumbers = (num1, num2) => (typeof num1 === 'number' && typeof num2 === 'number' ? num1 + num2 : NaN);
 
 /*-----------------------------------------------------------------
 Challenge: 03-sumNumbers
@@ -76,7 +72,7 @@ sumNumbers([2, 10, -5]) //=> 7
 sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
-function sumNumbers(arrayOfNums) {
+const sumNumbers = (arrayOfNums) => {
   let sum = 0;
   if (arrayOfNums.length > 0) {
     for (let i = 0; i < arrayOfNums.length; i++) {
@@ -85,7 +81,7 @@ function sumNumbers(arrayOfNums) {
     }
   }
   return sum;
-}
+};
 
 /*-----------------------------------------------------------------
 Challenge: 04-addList
@@ -657,6 +653,22 @@ balancedBrackets( '[({}[])]' ) // => true
 -----------------------------------------------------------------*/
 // Your solution for 23-balancedBrackets here:
 
+const balancedBrackets = (brackets) => {
+  checkedBrackets = [];
+  bracketPairs = { ')': '(', '}': '{', ']': '[' };
+  for (let i = 0; i < brackets.length; i++) {
+    const bracket = brackets[i];
+    if (bracket in bracketPairs) {
+      if (checkedBrackets.length && checkedBrackets[checkedBrackets.length - 1] === bracketPairs[bracket])
+        checkedBrackets.pop();
+      else return false;
+    } else {
+      checkedBrackets.push(bracket);
+    }
+  }
+  return checkedBrackets.length ? false : true;
+};
+
 /*-----------------------------------------------------------------
 Challenge: 24-isWinningTicket
 
@@ -682,6 +694,12 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 100], ['Hello', 108] ] ) // => true
 isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
+const isWinningTicket = (ticket) => {
+  for (let i = 0; i < ticket.length; i++) {
+    const char = String.fromCharCode(ticket[i][1]);
+    return ticket[i][0].includes(char) ? true : false;
+  }
+};
 
 /*-----------------------------------------------------------------
 Challenge: 25-getNumForIP
@@ -708,6 +726,14 @@ getNumForIP( '192.156.99.15' ) // => 3231474447
 getNumForIP( '10.0.0.1' ) // => 167772161
 -----------------------------------------------------------------*/
 // Your solution for 25-getNumForIP here:
+const getNumForIP = (ip) => {
+  const split_ip = ip.split('.').reverse();
+  let sum = 0;
+  split_ip.forEach(function (num, i) {
+    sum += parseInt(num) * 256 ** i;
+  });
+  return sum;
+};
 
 /*-----------------------------------------------------------------
 Challenge: 26-toCamelCase
