@@ -728,11 +728,11 @@ getNumForIP( '10.0.0.1' ) // => 167772161
 // Your solution for 25-getNumForIP here:
 const getNumForIP = (ip) => {
   const split_ip = ip.split('.').reverse();
-  let sum = 0;
+  let ip_value = 0;
   split_ip.forEach(function (num, i) {
-    sum += parseInt(num) * 256 ** i;
+    ip_value += parseInt(num) * 256 ** i;
   });
-  return sum;
+  return ip_value;
 };
 
 /*-----------------------------------------------------------------
